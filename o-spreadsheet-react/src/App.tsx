@@ -1,5 +1,5 @@
 import './App.css';
-import { SpreadsheetDemo } from './spreadsheet/SpreadsheetDemo';
+import { SpreadsheetDemo } from './demo/SpreadsheetDemo';
 
 function App() {
   return <SpreadsheetDemo />;

@@ -1,4 +1,4 @@
-import { menuRegistry } from './menu-registry';
+import { menuRegistry } from '../spreadsheet';
 
 // Demo type menu items
 menuRegistry.defineMenu({

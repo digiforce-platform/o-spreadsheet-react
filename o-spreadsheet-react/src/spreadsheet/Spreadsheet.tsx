@@ -13,66 +13,41 @@ import {
   onWillDestroy,
   useExternalListener
 } from '@odoo/owl'
-import { useEffect, useRef, useState } from 'react'
-// @ts-ignore
-import { Model, Spreadsheet as SpreadsheetComponent, registries } from '@odoo/o-spreadsheet/dist/o-spreadsheet.esm'
-import templates from './templates'
+import { useEffect, useRef } from 'react'
+import { Model, Spreadsheet as SpreadsheetComponent } from '@odoo/o-spreadsheet'
+import templates from '@odoo/o-spreadsheet/templates'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
-import { WebsocketTransport } from './transport'
-
-const { topbarMenuRegistry } = registries;
 
 // Define the OWL Spreadsheet wrapper component
 class SpreadsheetWrapper extends OwlComponent {
   static template = xml`<SpreadsheetComponent model="model"/>`;
   static components = { SpreadsheetComponent };
-
   declare model: Model;
   static props: any = {}
-  transport: WebsocketTransport | null = null;
 
   setup() {
-
     onWillStart(async () => {
       const { 
         data = {}, 
         client = { id: crypto.randomUUID(), name: 'Local' },
-        collaborative = false,
-        websocketUrl = 'ws://localhost:9090',
         mode = 'normal',
         onWillStart,
-        onStateChanged,
-        menu = {}
+        menu
       } = this.props;
 
       try {
-        if (collaborative) {
-          this.transport = new WebsocketTransport(websocketUrl);
-          await this.transport.connect();
-        }
-
         const model = new Model(data, {
           external: {},
-          custom: {},
+          custom: {
+            menu
+          },
           client,
-          mode,
-          menu
+          mode
         });
 
         if (onWillStart) {
           await onWillStart(model);
-        }
-
-        if (collaborative && this.transport) {
-          model.on('update', (state) => {
-            if (this.transport) {
-              this.transport.sendMessage(state);
-            }
-            if (onStateChanged) {
-              onStateChanged(state);
-            }
-          });
         }
 
         this.model = model;
@@ -107,9 +82,6 @@ class SpreadsheetWrapper extends OwlComponent {
       const { onWillUnmount } = this.props;
       if (this.model) {
         this.model.leaveSession();
-      }
-      if (this.transport) {
-        this.transport.disconnect();
       }
       if (onWillUnmount) {
         onWillUnmount();

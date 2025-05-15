@@ -1,5 +1,4 @@
-// @ts-ignore
-import { registries } from '@odoo/o-spreadsheet/dist/o-spreadsheet.esm';
+import { registries } from '@odoo/o-spreadsheet';
 
 const { topbarMenuRegistry } = registries;
 
@@ -59,7 +58,7 @@ class MenuRegistry {
     const menuConfig = {
       ...menu.config,
       isVisible: (env: any) => {
-        return !!env.model.config.menu[menu.id];
+        return !!env.model.config.custom.menu[menu.id];
       },
     };
 
