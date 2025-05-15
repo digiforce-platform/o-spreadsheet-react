@@ -16,9 +16,7 @@ import {
 import { useEffect, useRef } from 'react'
 import { Model, Spreadsheet as SpreadsheetComponent } from '@odoo/o-spreadsheet'
 import templates from '@odoo/o-spreadsheet/templates'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'font-awesome/css/font-awesome.min.css'
-
+import './spreadsheet.scss'
 // Define the OWL Spreadsheet wrapper component
 class SpreadsheetWrapper extends OwlComponent {
   static template = xml`<SpreadsheetComponent model="model"/>`;
@@ -194,7 +192,8 @@ function Spreadsheet(props: SheetProps) {
   }, []);
 
   return (
-    <div 
+    <div
+      className="spreadsheet-container"
       ref={spreadsheetRef} 
       style={{ 
         width: '100%', 

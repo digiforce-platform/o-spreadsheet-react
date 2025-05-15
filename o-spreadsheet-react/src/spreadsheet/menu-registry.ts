@@ -11,7 +11,7 @@ export interface MenuConfig {
   onDisplayHeaderChange: (display: boolean) => void;
 }
 
-interface MenuDefinition {
+export interface MenuDefinition {
   id: string;
   parent?: string[];
   config: {
@@ -25,7 +25,7 @@ interface MenuDefinition {
   };
 }
 
-class MenuRegistry {
+export class MenuRegistry {
   private static instance: MenuRegistry;
   private registeredMenus: Map<string, {
     enabled: boolean;

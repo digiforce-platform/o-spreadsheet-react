@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/demo/SpreadsheetDemo.tsx","./src/demo/demo-data.ts","./src/demo/menu-items.ts","./src/demo/transport.ts","./src/spreadsheet/Spreadsheet.tsx","./src/spreadsheet/index.ts","./src/spreadsheet/menu-registry.ts"],"version":"5.8.3"}
