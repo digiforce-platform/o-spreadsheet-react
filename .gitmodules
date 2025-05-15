@@ -1,0 +1,3 @@
+[submodule "o-spreadsheet"]
+	path = o-spreadsheet
+	url = https://github.com/digiforce-platform/o-spreadsheet.git
