@@ -1,15 +1,12 @@
 import dts from 'rollup-plugin-dts';
-import { defineConfig } from 'rollup';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 
-export default defineConfig({
+export default {
   input: 'dist/types/index.d.ts',
-  output: [
-    { 
-      file: 'dist/spreadsheet.d.ts',
-      format: 'es',
-      sourcemap: false
-    }
+  output: [{ file: 'dist/spreadsheet.d.ts', format: 'es' }],
+  plugins: [
+    dts(),
+    nodeResolve(),
   ],
-  plugins: [dts()],
-  external: [/\.css$/, /\.scss$/, /\.(png|jpg|jpeg|gif|svg)$/]
-});
+  external: [/\.scss$/, /\.css$/]
+};

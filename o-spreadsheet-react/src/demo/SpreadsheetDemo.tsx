@@ -1,30 +1,18 @@
-import { useEffect } from 'react';
-import { Spreadsheet, menuRegistry } from '../spreadsheet';
+import { Spreadsheet } from '../spreadsheet';
 import { demoData } from './demo-data';
 import './menu-items';
-
+import { Model } from '@digiforce-nc/o-spreadsheet';
 export function SpreadsheetDemo() {
-  useEffect(() => {
-    menuRegistry.showMenu('file');
-    menuRegistry.showMenu('readonly');
-    menuRegistry.showMenu('dashboard');
-    menuRegistry.showMenu('read_write');
-  }, []);
-
+  const model = new Model(demoData, {
+    external: {},
+    custom: {},
+    client: { id: '1', name: 'Demo User' },
+    mode: 'normal'
+  });
+  function setup(ctx: any) {
+    console.log('setup', ctx.uuidv4());
+  }
   return (
-    <Spreadsheet
-      data={demoData}
-      client={{ id: '1', name: 'Demo User' }}
-      onError={(error) => console.error('Spreadsheet error:', error)}
-      menu={{
-        readonly: true,
-        dashboard: true,
-        read_write: true,
-        demo: true,
-        basic_demo: true,
-        pivot_demo: true,
-        large_demo: true,
-      }}
-    />
+    <Spreadsheet model={model} setup={setup} />
   );
 }

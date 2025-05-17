@@ -2,6 +2,7 @@
 $spreadsheet-width: 100%;
 $spreadsheet-height: 100%;
 $fa-font-path: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts";
+$enable-dark-mode: false;
 
 // scss-docs-start import-stack
 // Configuration
@@ -11,16 +12,15 @@ $fa-font-path: "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts"
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
-
-// // Layout & components
 @import "bootstrap/scss/root";
 
 // Main container
-:root {
+.spreadsheet-container {
   width: $spreadsheet-width;
   height: $spreadsheet-height;
   position: relative;
-  
+  font-family: var(--#{$prefix}body-font-family);
+  // Layout & components
   @import "bootstrap/scss/reboot";
   @import "bootstrap/scss/type";
   @import "bootstrap/scss/images";

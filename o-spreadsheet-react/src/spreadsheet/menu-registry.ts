@@ -1,4 +1,4 @@
-import { registries } from '@odoo/o-spreadsheet';
+import { registries } from '@digiforce-nc/o-spreadsheet';
 
 const { topbarMenuRegistry } = registries;
 
@@ -58,7 +58,7 @@ export class MenuRegistry {
     const menuConfig = {
       ...menu.config,
       isVisible: (env: any) => {
-        return !!env.model.config.custom.menu[menu.id];
+        return !!env.model.config.custom.menu?.[menu.id];
       },
     };
 

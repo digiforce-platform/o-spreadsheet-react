@@ -1,3 +1,3 @@
-export { Spreadsheet } from './Spreadsheet';
+export * from './Spreadsheet';
 export type { SheetProps } from './Spreadsheet';
-export { menuRegistry } from './menu-registry';
+export * from './menu-registry';
