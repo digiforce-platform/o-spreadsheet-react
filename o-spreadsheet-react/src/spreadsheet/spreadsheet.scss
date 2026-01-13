@@ -13,6 +13,7 @@ $enable-dark-mode: false;
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/utilities";
 @import "bootstrap/scss/root";
+@import '@digiforce-nc/o-spreadsheet/sheet_variables.scss';
 
 // Main container
 .spreadsheet-container {
@@ -60,4 +61,5 @@ $enable-dark-mode: false;
   // scss-docs-end import-stack
   
   @import "font-awesome/scss/font-awesome";
-} 
+  @import '@digiforce-nc/o-spreadsheet/sheet.scss';
+}
